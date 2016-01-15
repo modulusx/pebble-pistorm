@@ -16,9 +16,6 @@ function publishToPubNub(index) {
 	var url = 'http://pubsub.pubnub.com/publish/' + keypub + '/' + keysub + '/0/' + channel + '/0/';
 	var cmd = '%22' + items[index].cmd + '%22';
 	
-	console.log("Using URL:" + url);
-	console.log("Using CMD:" + cmd);
-	
   var xhg = new XMLHttpRequest();
   xhg.open('GET', url + cmd);
 	xhg.send();
@@ -39,7 +36,6 @@ function sendAppMsgToPebble(dict) {
 Pebble.addEventListener('appmessage',
   function(e) {
     if ('KEY_ACTION' in e.payload) {
-			console.log("Sending message: " + e.payload.KEY_ACTION);
 			publishToPubNub(e.payload.KEY_ACTION);
 		}
   }                     
