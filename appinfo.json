@@ -1,0 +1,19 @@
+{
+    "appKeys": {},
+    "capabilities": [
+        ""
+    ],
+    "companyName": "modulusx@gmail.com",
+    "longName": "PiStorm",
+    "projectType": "native",
+    "resources": {
+        "media": []
+    },
+    "sdkVersion": "3",
+    "shortName": "PiStorm",
+    "uuid": "787022f5-2bd7-4623-afbc-cdc9aa031f00",
+    "versionLabel": "1.0",
+    "watchapp": {
+        "watchface": false
+    }
+}
