@@ -31,7 +31,6 @@ static void sendToPubNub(int index) {
 }
 
 static void menu_select_callback(int index, void *ctx) {
-  s_main->menu_items[index].subtitle = "You've hit select here!";
   sendToPubNub(index);
   layer_mark_dirty(simple_menu_layer_get_layer(s_main->menu_layer));
 }
@@ -108,13 +107,10 @@ void deleteWC() {
 }
 
 static void inbox_received_callback(DictionaryIterator *iterator, void *context) {
-  // Store incoming information
   static char buffer_title[16];
 
-  // Read first item
   Tuple *t = dict_read_first(iterator);
 
-  // For all items
   while(t != NULL) {
     switch(t->key) {
     case KEY_MENU_ITEMS:
@@ -132,7 +128,6 @@ static void inbox_received_callback(DictionaryIterator *iterator, void *context)
       break;
     }
 
-    // Look for next item
     t = dict_read_next(iterator);
   }
 
@@ -161,13 +156,11 @@ static void init() {
   });
   window_stack_push(s_main->menu_window, true);
 	
-  // Register callbacks
   app_message_register_inbox_received(inbox_received_callback);
   app_message_register_inbox_dropped(inbox_dropped_callback);
   app_message_register_outbox_failed(outbox_failed_callback);
   app_message_register_outbox_sent(outbox_sent_callback);
   
-  // Open AppMessage
   app_message_open(app_message_inbox_size_maximum(), app_message_outbox_size_maximum());
 }
 

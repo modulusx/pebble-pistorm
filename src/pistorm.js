@@ -36,7 +36,6 @@ function sendAppMsgToPebble(dict) {
   );
 }
 
-// Listen for when an AppMessage is received
 Pebble.addEventListener('appmessage',
   function(e) {
     if ('KEY_ACTION' in e.payload) {
@@ -46,7 +45,6 @@ Pebble.addEventListener('appmessage',
   }                     
 );
 
-// Listen for when the watchapp is opened
 Pebble.addEventListener('ready',
   function(e) {
 		var dictionary = {
@@ -63,20 +61,17 @@ Pebble.addEventListener('ready',
   }
 );
 
-// Show configuration page
 Pebble.addEventListener('showConfiguration', function(e) {
   Pebble.openURL('http://pebble.mrkunkel.com/pistorm.php');
 });
 
-// Handle the settings update
 Pebble.addEventListener('webviewclosed', function(e) {
   console.log('Configuration window returned: ' + e.response);
   var configuration;
   try {
     configuration = JSON.parse(decodeURIComponent(e.response));
-		
-		//https://github.com/mcongrove/PebbleBigBlocks/blob/master/src/js/pebble-js-app.js
-		
+
+		// Disabled to prevent overwriting valid values while testing
     //localStorage.clear();
     //localStorage.setItem("keypub", configuration.keypub);
     //localStorage.setItem("keysub", configuration.keysub);
