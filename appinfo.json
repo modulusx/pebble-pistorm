@@ -1,7 +1,15 @@
 {
-    "appKeys": {},
+    "appKeys": {
+        "KEY_ACTION": 12,
+        "KEY_FORWARD": 0,
+        "KEY_LEFT": 2,
+        "KEY_MENU_ITEMS": 10,
+        "KEY_MENU_TITLE": 11,
+        "KEY_RIGHT": 1,
+        "KEY_STOP": 3
+    },
     "capabilities": [
-        ""
+        "configurable"
     ],
     "companyName": "modulusx@gmail.com",
     "longName": "PiStorm",
@@ -11,6 +19,9 @@
     },
     "sdkVersion": "3",
     "shortName": "PiStorm",
+    "targetPlatforms": [
+        "basalt"
+    ],
     "uuid": "787022f5-2bd7-4623-afbc-cdc9aa031f00",
     "versionLabel": "1.0",
     "watchapp": {
