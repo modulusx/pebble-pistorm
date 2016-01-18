@@ -7,15 +7,16 @@ var main_menu = { "items" : [
     { "title":"Backward" , "cmd":"b" },
     { "title":"Right" , "cmd":"r" },
     { "title":"Left" , "cmd":"l" },
+    { "title":"Voltage" , "cmd":"v" },
     { "title":"Quit" , "cmd":"q" }
   ]
 };
 
 var items = main_menu.items;
 
-function publishToPubNub(index) {
+function publishToPubNub(value) {
   var url = 'http://pubsub.pubnub.com/publish/' + keypub + '/' + keysub + '/0/' + channel + '/0/';
-  var cmd = '%22' + items[index].cmd + '%22';
+  var cmd = '%22' + value + '%22';
 	
   var xhg = new XMLHttpRequest();
   xhg.open('GET', url + cmd);
@@ -37,7 +38,7 @@ function sendAppMsgToPebble(dict) {
 Pebble.addEventListener('appmessage',
   function(e) {
     if ('KEY_ACTION' in e.payload) {
-      publishToPubNub(e.payload.KEY_ACTION);
+      publishToPubNub(items[e.payload.KEY_ACTION].cmd);
     }
   }                     
 );
@@ -55,6 +56,7 @@ Pebble.addEventListener('ready',
       };
       sendAppMsgToPebble(dictionary2);
     }
+    publishToPubNub('p');
   }
 );
 
